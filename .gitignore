@@ -23,11 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-vite.config.js
-tailwind.config.js
-eslint.config.js
-package-lock.json
-package.json
-postcss.config.js
+
 
 .vercel
