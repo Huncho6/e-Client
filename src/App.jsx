@@ -21,16 +21,25 @@ function App() {
 
   return (
     <>
-      <NavBar cartItems={cartItems} removeFromCart={removeFromCart} />
-      <Routes>
-        <Route path="nike" element={<Nike addToCart={addToCart} />} />
-        <Route path="yeezy" element={<Yeezy addToCart={addToCart} />} />
-        <Route
-          path="newbalance"
-          element={<NewBalance addToCart={addToCart} />}
-        />
-      </Routes>
-      <Container />
+      {/* Sticky NavBar */}
+      <div className="sticky top-0 z-50 bg-white">
+        <NavBar cartItems={cartItems} removeFromCart={removeFromCart} />
+      </div>
+
+      {/* Main Content */}
+      <div className="main-content">
+        <Routes>
+          <Route path="nike" element={<Nike addToCart={addToCart} />} />
+          <Route path="yeezy" element={<Yeezy addToCart={addToCart} />} />
+          <Route
+            path="newbalance"
+            element={<NewBalance addToCart={addToCart} />}
+          />
+        </Routes>
+        <Container />
+      </div>
+
+      {/* Footer */}
       <Footer />
     </>
   );

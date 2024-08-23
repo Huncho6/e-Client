@@ -47,6 +47,7 @@ const Nike = ({addToCart}) => {
 
   useEffect(() => {
     fetchNike();
+    window.scrollTo(0, 0);
   }, []);
 
   if (isLoading) {

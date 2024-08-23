@@ -42,84 +42,86 @@ const NavBar = ({ cartItems, removeFromCart }) => {
 
   return (
     <div>
-      <div className="bg-primary flex justify-between border-b border-black">
-        <h1 className="ml-2 text-2xl font-bold ">
-          Huncho_<span className="text-green-500">kicks</span>
-        </h1>
-        <div className="mr-8">
-          <ul className="flex gap-[20px]">
-            <li>
-              <Link to="nike">
-                Nike
-                <span>
-                  <SiNike />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="newbalance">
-                New Balance{" "}
-                <span>
-                  <SiNewbalance className="text-red-700" />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="yeezy">
-                Yeezy{" "}
-                <span>
-                  <CgAdidas />
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <button
-            className="text-white p-2 rounded-md bg-green-950 hover:bg-green-700"
-            onClick={() => setIsDropdownOpen((prev) => !prev)}
-          >
-            ☰
-          </button>
-          {isDropdownOpen && (
-            <div className="dropdown-menu absolute right-0 mt-2 w-[350px] rounded-md shadow-lg bg-green-950 grid grid-rows-3">
-              {cartItems.length > 0 ? (
-                <ul className="py-1">
-                  {cartItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className="px-4 py-2 text-sm text-gray-700 flex justify-between items-center hover:bg-gray-100"
-                    >
-                      <span>
-                        {item.name} - {item.price}
-                      </span>
-                      <button
-                        className="text-red-500 hover:text-red-700 focus:outline-none"
-                        onClick={() => removeFromCart(index)}
+      <div className="sticky top-0 left-0 w-full z-50 bg-white">
+        <div className="flex justify-between border-b border-black">
+          <h1 className="ml-2 text-2xl font-bold">
+            Huncho_<span className="text-green-500">kicks</span>
+          </h1>
+          <div className="mr-8">
+            <ul className="flex gap-[20px]">
+              <li>
+                <Link to="nike">
+                  Nike
+                  <span>
+                    <SiNike />
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="newbalance">
+                  New Balance{" "}
+                  <span>
+                    <SiNewbalance className="text-red-700" />
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="yeezy">
+                  Yeezy{" "}
+                  <span>
+                    <CgAdidas />
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <button
+              className="text-white p-2 rounded-md bg-green-950 hover:bg-green-700"
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
+            >
+              ☰
+            </button>
+            {isDropdownOpen && (
+              <div className="dropdown-menu absolute right-0 mt-2 w-[350px] rounded-md shadow-lg bg-green-950 grid grid-rows-3">
+                {cartItems.length > 0 ? (
+                  <ul className="py-1">
+                    {cartItems.map((item, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 text-sm text-gray-700 flex justify-between items-center hover:bg-gray-100"
                       >
-                        Remove
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="px-4 py-2 text-sm text-gray-700">
-                  Your cart is empty
-                </p>
-              )}
-            </div>
-          )}
+                        <span>
+                          {item.name} - {item.price}
+                        </span>
+                        <button
+                          className="text-red-500 hover:text-red-700 focus:outline-none"
+                          onClick={() => removeFromCart(index)}
+                        >
+                          Remove
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="px-4 py-2 text-sm text-gray-700">
+                    Your cart is empty
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Animated Text Section */}
-      <div className="bg-secondary flex justify-center border-b border-black pb-2 text-green-950">
-        <h1 className={showFirstText ? "block" : "hidden"}>
-          Best Kicks In The City
-        </h1>
-        <h1 className={!showFirstText ? "block" : "hidden"}>
-          for the best prices
-        </h1>
+        {/* Animated Text Section */}
+        <div className="bg-secondary flex justify-center border-b border-black pb-2 text-green-950">
+          <h1 className={showFirstText ? "block" : "hidden"}>
+            Best Kicks In The City
+          </h1>
+          <h1 className={!showFirstText ? "block" : "hidden"}>
+            for the best prices
+          </h1>
+        </div>
       </div>
 
       {/* Image Section with Rotation */}
