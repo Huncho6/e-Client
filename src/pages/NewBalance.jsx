@@ -29,7 +29,7 @@ const NewBalance = ( { addToCart } ) => {
   const fetchNb = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:1669/api/v1/nb");
+      const res = await fetch("https://e-server-1.onrender.com/api/v1/nb");
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -60,12 +60,12 @@ const NewBalance = ( { addToCart } ) => {
           <SiNewbalance />
         </span>
       </div>
-      <div className="ml-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="mx-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {Array.isArray(nb) &&
           nb.map((item, index) => (
             <div
               key={index}
-              className="w-full sm:w-[250px] md:w-[300px] h-[470px] bg-red-500 shadow-lg rounded-lg overflow-hidden mb-4"
+              className="w-full sm:w-[220px] md:w-[250px] h-[470px] bg-red-500 shadow-lg rounded-lg overflow-hidden mb-4"
             >
               <img
                 src={item.image}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {  useLocation } from "react-router-dom";
 import { SiNike } from "react-icons/si";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
@@ -29,7 +30,7 @@ const Nike = ({addToCart}) => {
   const fetchNike = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:1669/api/v1/nike");
+      const res = await fetch("https://e-server-1.onrender.com/api/v1/nike");
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -60,12 +61,12 @@ const Nike = ({addToCart}) => {
           <SiNike />
         </span>
       </div>
-      <div className="ml-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="ml-7 mr-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {Array.isArray(nike) &&
           nike.map((item, index) => (
             <div
               key={index}
-              className="w-full sm:w-[250px] md:w-[300px] h-[470px] bg-white shadow-lg rounded-lg overflow-hidden mb-4"
+              className="w-full sm:w-[220px] md:w-[250px] h-[470px] bg-white shadow-lg rounded-lg overflow-hidden mb-4"
             >
               <img
                 src={item.image}

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { SiNike } from "react-icons/si";
 import { SiNewbalance } from "react-icons/si";
 import { CgAdidas } from "react-icons/cg";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = ({ cartItems, removeFromCart }) => {
+  const { pathname } = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showFirstText, setShowFirstText] = useState(true);
   const [currentImage, setCurrentImage] = useState(0);
@@ -22,7 +24,6 @@ const NavBar = ({ cartItems, removeFromCart }) => {
     },
   ];
 
-  // Toggle text every 5 seconds
   useEffect(() => {
     const textInterval = setInterval(() => {
       setShowFirstText((prev) => !prev);
@@ -31,7 +32,6 @@ const NavBar = ({ cartItems, removeFromCart }) => {
     return () => clearInterval(textInterval);
   }, []);
 
-  // Rotate images every 5 seconds
   useEffect(() => {
     const imageInterval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
@@ -49,28 +49,28 @@ const NavBar = ({ cartItems, removeFromCart }) => {
         <div className="mr-8">
           <ul className="flex gap-[20px]">
             <li>
-              <a href="Nike.jsx">
+              <Link to="nike">
                 Nike
                 <span>
                   <SiNike />
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="NewBalance.jsx">
+              <Link to="newbalance">
                 New Balance{" "}
                 <span>
                   <SiNewbalance className="text-red-700" />
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="Yeezy.jsx">
+              <Link to="yeezy">
                 Yeezy{" "}
                 <span>
                   <CgAdidas />
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -123,9 +123,11 @@ const NavBar = ({ cartItems, removeFromCart }) => {
       </div>
 
       {/* Image Section with Rotation */}
-      <div className="p-4 bg-primary shadow-lg rounded-lg flex justify-center">
-        <img src={images[currentImage].src} alt={images[currentImage].alt} />
-      </div>
+      {pathname === "/" && (
+        <div className="p-4 bg-primary shadow-lg rounded-lg flex justify-center">
+          <img src={images[currentImage].src} alt={images[currentImage].alt} />
+        </div>
+      )}
     </div>
   );
 };
